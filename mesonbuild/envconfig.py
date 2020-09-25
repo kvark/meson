@@ -337,6 +337,7 @@ class BinaryTable:
         'cmake': 'CMAKE',
         'qmake': 'QMAKE',
         'pkgconfig': 'PKG_CONFIG',
+        'llvm-config': 'LLVM_CONFIG',
         'make': 'MAKE',
     }  # type: T.Dict[str, str]
 
@@ -378,8 +379,7 @@ class BinaryTable:
         Returns command with args as list if found, Returns `None` if nothing is
         found.
         """
-        # Try explicit map, don't fall back on env var
-        # Try explict map, then env vars
+        # Try explicit map, then env vars
         for _ in [()]: # a trick to get `break`
             raw_command = self.binaries.get(name)
             if raw_command is not None:
